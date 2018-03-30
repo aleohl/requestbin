@@ -1,12 +1,16 @@
-app:
-    build: .
-    environment:
-        REALM: prod
-        REDIS_URL: "//redis:6379"
-    links:
-        - redis
-    ports:
-        - "8000:8000"
+version: "3"
+services:
 
-redis:
-    image: redis
+    redis:
+      image: redis
+
+    app:
+        build: .
+        environment:
+            REALM: prod
+            REDIS_URL: "//redis:6379"
+            SESSION_SECRET_KEY: "ENTER_YOUR_SECRET_KEY_64_CHARS"
+        links:
+            - redis
+        ports:
+            - "8000:8000"
