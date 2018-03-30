@@ -1,11 +1,26 @@
-# We have discontinued the publicly hosted version of RequestBin due to ongoing abuse that made it very difficult to keep the site up reliably. Please see instructions below for setting up your own self-hosted instance.
-
 Originally Created by [Jeff Lindsay](http://progrium.com)
+
+Forked from [https://github.com/Runscope/requestbin](https://github.com/Runscope/requestbin)
 
 License
 -------
 MIT
 
+Self-hosted version
+=====================
+Modified to fit self-hosted environment by @aleohl.
+
+## Modifications
+* Remove tracking scripts and images from the templates
+* Remove bugsnag dependency and the code where this was included
+* Make the footer smaller whilst preserving the details of Runscope
+* Add new css style for blue accent to be used in the logo text
+* Change the title of all pages to contain "Self-hosted" and add "Self-hosted" to the logo text
+* Define following as environment variables
+    * ROOT_URL
+    * SESSION_SECRET_KEY
+    * MAX_REQUESTS (max request saved by the service, defaults to 20)
+    * BIN_TTL (time to life for bins, in seconds, defaults to 48 hours (48*3600))
 
 Looking to self-host?
 =====================
@@ -15,7 +30,7 @@ Looking to self-host?
 ## Deploy your own instance using Heroku
 Create a Heroku account if you haven't, then grab the RequestBin source using git:
 
-`$ git clone git://github.com/Runscope/requestbin.git`
+`$ git clone git://github.com/aleohl/requestbin.git`
 
 From the project directory, create a Heroku application:
 
@@ -41,7 +56,7 @@ It will push to Heroku and give you a URL that your own private RequestBin will 
 On the server/machine you want to host this, you'll first need a machine with
 docker and docker-compose installed, then grab the RequestBin source using git:
 
-`$ git clone git://github.com/Runscope/requestbin.git`
+`$ git clone git://github.com/aleohl/requestbin.git`
 
 Go into the project directory and then build and start the containers
 
