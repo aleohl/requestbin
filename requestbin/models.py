@@ -27,11 +27,11 @@ class Bin(object):
 
     def json(self):
         return json.dumps(self.to_dict())
-    
+
     def to_dict(self):
         return dict(
-            private=self.private, 
-            color=self.color, 
+            private=self.private,
+            color=self.color,
             name=self.name,
             request_count=self.request_count)
 
@@ -61,7 +61,8 @@ class Bin(object):
 
 class Request(object):
     ignore_headers = config.IGNORE_HEADERS
-    max_raw_size = config.MAX_RAW_SIZE 
+    ignore_headers_curl = config.IGNORE_HEADERS_CURL
+    max_raw_size = config.MAX_RAW_SIZE
 
     def __init__(self, input=None):
         if input:
@@ -70,9 +71,13 @@ class Request(object):
             self.remote_addr = input.headers.get('X-Forwarded-For', input.remote_addr)
             self.method = input.method
             self.headers = dict(input.headers)
+            self.headers_curl = dict(input.headers)
 
             for header in self.ignore_headers:
                 self.headers.pop(header, None)
+
+            for header in self.ignore_headers_curl:
+                self.headers_curl.pop(header, None)
 
             self.query_string = input.args.to_dict(flat=True)
             self.form_data = []
@@ -88,7 +93,7 @@ class Request(object):
             self.content_length = len(self.raw)
 
             # for header in self.ignore_headers:
-            #     self.raw = re.sub(r'{}: [^\n]+\n'.format(header), 
+            #     self.raw = re.sub(r'{}: [^\n]+\n'.format(header),
             #                         '', self.raw, flags=re.IGNORECASE)
             if self.raw and len(self.raw) > self.max_raw_size:
                 self.raw = self.raw[0:self.max_raw_size]
@@ -101,6 +106,7 @@ class Request(object):
             remote_addr=self.remote_addr,
             method=self.method,
             headers=self.headers,
+            headers_curl=self.headers_curl,
             query_string=self.query_string,
             raw=self.raw,
             form_data=self.form_data,

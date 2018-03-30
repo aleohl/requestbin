@@ -187,7 +187,7 @@ public class RequestBinTutorial {
 
     <h5>cURL command</h5>
     <pre class="body prettyprint">curl -X {{request.method}} \{{"\n"}}'{{base_url}}/{{bin.name}}' \{{"\n"}}
-        {%- for header in request.headers.items() -%}
+        {%- for header in request.headers_curl.items() -%}
         -H '{{header.0}}: {{header.1|escape}}' \{{"\n"}}
         {%- endfor -%}
         {%- if request.raw -%}--data '{{request.raw}}' \{{"\n"}}{%-endif-%}
