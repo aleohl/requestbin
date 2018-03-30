@@ -67,4 +67,6 @@ X-Real-Ip
 X-Forwarded-Proto
 X-Via
 X-Forwarded-Port
+X-Forwarded-Server
+X-Forwarded-Host
 """.split("\n")[1:-1]
