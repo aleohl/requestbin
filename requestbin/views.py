@@ -49,15 +49,3 @@ def bin(name):
         resp = make_response("ok\n")
         resp.headers['Sponsored-By'] = "https://www.runscope.com"
         return resp
-
-
-@app.endpoint('views.docs')
-def docs(name):
-    doc = db.lookup_doc(name)
-    if doc:
-        return render_template('doc.html',
-                content=doc['content'],
-                title=doc['title'],
-                recent=expand_recent_bins())
-    else:
-        return "Not found", 404
