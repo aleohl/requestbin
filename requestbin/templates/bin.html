@@ -185,6 +185,13 @@ public class RequestBinTutorial {
     <div class="request-body" data-id="{{ request.id }}">
 <pre class="body prettyprint">{%if request.raw%}{{request.raw}}{%else%}<em>None</em>{%endif%}</pre>
 
+    <h5>cURL command</h5>
+    <pre class="body prettyprint">curl -X {{request.method}} \{{"\n"}}'{{base_url}}/{{bin.name}}' \{{"\n"}}
+        {%- for header in request.headers.items() -%}
+        -H '{{header.0}}: {{header.1|escape}}' \{{"\n"}}
+        {%- endfor -%}
+        {%- if request.raw -%}--data '{{request.raw}}' \{{"\n"}}{%-endif-%}
+        --compressed</pre>
   </div>
 </div>
 {% endmacro %}
