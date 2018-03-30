@@ -26,8 +26,6 @@ REDIS_DB = 9
 
 REDIS_PREFIX = "requestbin"
 
-BUGSNAG_KEY = ""
-
 if REALM == 'prod':
     DEBUG = False
     ROOT_URL = os.environ.get("ROOT_URL", "http://localhost:8000")
@@ -42,8 +40,6 @@ if REALM == 'prod':
     REDIS_PORT = url_parts.port
     REDIS_PASSWORD = url_parts.password
     REDIS_DB = url_parts.fragment
-
-    BUGSNAG_KEY = os.environ.get("BUGSNAG_KEY", BUGSNAG_KEY)
 
     IGNORE_HEADERS = """
 X-Varnish
