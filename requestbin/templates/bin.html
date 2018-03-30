@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-{% block title %}RequestBin - {{bin.name}}{% endblock %}
+{% block title %}RequestBin Self-hosted - {{bin.name}}{% endblock %}
 {% block icon %}<link rel="shortcut icon" href="{{bin.favicon_uri}}" />{% endblock %}
 
 {% block sidebar %}{% endblock %}
@@ -20,7 +20,7 @@
           <div class="row-fluid">
             <div class="span4">
               {{base_url}}<br>
-              <span class="method">{{request.method}}</span> 
+              <span class="method">{{request.method}}</span>
               <span class="absolute-path">{{request.path}}</span><span class="querystring">{{request.query_string|to_qs}}</span>
             </div>
             <div class="span6 content">
@@ -168,7 +168,7 @@ public class RequestBinTutorial {
             {% else %}
               <p class="keypair"><strong>{{k}}:</strong> {{v}}</p>
             {% endif %}
-          {% endfor %} 
+          {% endfor %}
         {% endif %}
       </div>
       <div class="span8">
