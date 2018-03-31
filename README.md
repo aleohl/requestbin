@@ -11,7 +11,7 @@ Self-hosted version
 Modified to fit self-hosted environment by @aleohl.
 
 ## Modifications
-* Remove tracking scripts and images from the templates
+* **Remove tracking scripts and images from the templates**
 * Remove bugsnag dependency and the code where this was included
 * Make the footer smaller whilst preserving the details of Runscope
 * Add new css style for blue accent to be used in the logo text
@@ -21,6 +21,8 @@ Modified to fit self-hosted environment by @aleohl.
     * SESSION_SECRET_KEY
     * MAX_REQUESTS (max request saved by the service, defaults to 20)
     * BIN_TTL (time to life for bins, in seconds, defaults to 48 hours (48*3600))
+* Add cURL command to the request view, for faster testing
+    * Add separate config option to ignore headers for the cURL command
 
 Looking to self-host?
 =====================
